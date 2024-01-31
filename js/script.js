@@ -1,6 +1,6 @@
 const myLibrary = [];
 
-let bookInfo = document.querySelector("#book-info");
+let bookForm = document.querySelector("#book-form");
 let dialogAdd = document.querySelector(".dialog-add");
 let addBtn = document.querySelector("#add-btn");
 
@@ -20,9 +20,7 @@ function addBookToLibrary(name, description, author, pages, read){
     console.log(myLibrary);
 }
 
-dialogAdd.addEventListener("click", () => {
-    bookInfo.showModal();
-});
+dialogAdd.addEventListener("click", () => {bookForm.showModal();});
 
 addBtn.addEventListener("click", () => {
 
@@ -33,4 +31,5 @@ addBtn.addEventListener("click", () => {
     let read = document.querySelector("#read").checked;
 
     addBookToLibrary(name, description, author, pages, read);
+    myLibrary.forEach((book) => document.querySelector(".books").textContent += book.name);
 });
