@@ -2,6 +2,7 @@ const myLibrary = [];
 
 let bookInfo = document.querySelector("#book-info");
 let dialogAdd = document.querySelector(".dialog-add");
+let addBtn = document.querySelector("#add-btn");
 
 function Book(name, description, author, pages, read){
 
@@ -23,4 +24,13 @@ dialogAdd.addEventListener("click", () => {
     bookInfo.showModal();
 });
 
-addBookToLibrary("teton", "ashdjakshdjkashjdhahsdhkassh", "jorge espinoza", 188, false);
+addBtn.addEventListener("click", () => {
+
+    let name = document.querySelector("#name").value;
+    let description = document.querySelector("#description").value;
+    let author = document.querySelector("#author").value;
+    let pages = document.querySelector("#pages").value;
+    let read = document.querySelector("#read").checked;
+
+    addBookToLibrary(name, description, author, pages, read);
+});
