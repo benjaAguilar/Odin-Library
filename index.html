@@ -28,8 +28,28 @@
         <div class="content">
             <h2>My Library</h2>
             <div class="books"> here the books </div>
-            <button>Add +</button>
+            <button class="add-button">Add +</button>
         </div>
+        <dialog id="add-book">
+            <form method="dialog">
+                <label for="name">Book Name</label>
+                <input type="text" id="name">
+
+                <label for="description">Description</label>
+                <textarea id="description" cols="30" rows="10"></textarea>
+
+                <label for="author">Author</label>
+                <input type="text" id="author">
+
+                <label for="pages">Pages</label>
+                <input type="number" id="pages">
+
+                <label for="read">Read</label>
+                <input type="checkbox" name="" id="read">
+
+                <input type="submit">
+            </form>
+        </dialog>
     </div>
 </body>
 </html>
