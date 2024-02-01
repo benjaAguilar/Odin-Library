@@ -91,7 +91,9 @@ addBtn.addEventListener("click", () => {
     let pages = document.querySelector("#pages").value;
     let read = document.querySelector("#read").checked;
 
-    addBookToLibrary(name, description, author, pages, read);
-    printBook(name);
-   
+    if(name && description && author && pages != ""){
+        addBookToLibrary(name, description, author, pages, read);
+        printBook(name);
+
+    }
 });
