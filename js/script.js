@@ -4,6 +4,8 @@ let bookForm = document.querySelector("#book-form");
 let dialogAdd = document.querySelector(".dialog-add");
 let addBtn = document.querySelector("#add-btn");
 
+let bookInfo = document.querySelector("#book-info");
+
 function Book(name, description, author, pages, read){
 
     this.name = name;
@@ -19,6 +21,41 @@ function addBookToLibrary(name, description, author, pages, read){
     myLibrary.push(book);
     console.log(myLibrary);
     console.log(myLibrary.indexOf(book));
+}
+
+//Add event listener for every book created
+function createEvent(book){
+    book.addEventListener("click", () => {
+        let index;
+        let title = book.querySelector("p").textContent;
+
+        let description = document.querySelector(".description");
+        let author = document.querySelector(".author");
+        let pages = document.querySelector(".pages");
+        let read = document.querySelector("#read-info");
+
+        document.querySelector("#info-title").textContent = title;
+        document.querySelector(".title").textContent = title; 
+        
+        myLibrary.forEach((book) => {
+            if(book.name === title){
+                index = myLibrary.indexOf(book);
+                
+            }
+        });
+
+        description.textContent = myLibrary[index].description;
+        author.textContent = "By: " + myLibrary[index].author;
+        pages.textContent = "Pages: " + myLibrary[index].pages;
+        read.checked = myLibrary[index].read;
+        
+        read.addEventListener("change", () => {
+            myLibrary[index].read = read.checked;
+
+        });
+
+        bookInfo.showModal();
+    });
 }
 
 function printBook(name){
@@ -39,6 +76,8 @@ function printBook(name){
     div.appendChild(divTitle);
     bookBox.appendChild(div);
     bookSection.appendChild(bookBox);
+    
+    createEvent(bookBox);
 }
 
 dialogAdd.addEventListener("click", () => {bookForm.showModal();});
