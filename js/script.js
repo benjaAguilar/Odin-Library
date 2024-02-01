@@ -25,13 +25,19 @@ function printBook(name){
 
     let bookSection = document.querySelector(".books");
     let bookBox = document.createElement("div");
+    let div = document.createElement("div");
+    let divTitle = document.createElement("div");
     let bookTitle = document.createElement("p");
 
     bookTitle.textContent = name;
 
     bookBox.classList.add("example");
+    div.classList.add("border-book");
+    divTitle.classList.add("title-bg");
 
-    bookBox.appendChild(bookTitle);
+    divTitle.appendChild(bookTitle)
+    div.appendChild(divTitle);
+    bookBox.appendChild(div);
     bookSection.appendChild(bookBox);
 }
 
