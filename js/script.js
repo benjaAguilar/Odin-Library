@@ -18,10 +18,26 @@ function addBookToLibrary(name, description, author, pages, read){
     const book = new Book(name, description, author, pages, read)
     myLibrary.push(book);
     console.log(myLibrary);
+    console.log(myLibrary.indexOf(book));
+}
+
+function printBook(name){
+
+    let bookSection = document.querySelector(".books");
+    let bookBox = document.createElement("div");
+    let bookTitle = document.createElement("p");
+
+    bookTitle.textContent = name;
+
+    bookBox.classList.add("example");
+
+    bookBox.appendChild(bookTitle);
+    bookSection.appendChild(bookBox);
 }
 
 dialogAdd.addEventListener("click", () => {bookForm.showModal();});
 
+//Take the book info
 addBtn.addEventListener("click", () => {
 
     let name = document.querySelector("#name").value;
@@ -31,5 +47,6 @@ addBtn.addEventListener("click", () => {
     let read = document.querySelector("#read").checked;
 
     addBookToLibrary(name, description, author, pages, read);
-    myLibrary.forEach((book) => document.querySelector(".books").textContent += book.name);
+    printBook(name);
+   
 });
