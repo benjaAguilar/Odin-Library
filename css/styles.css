@@ -28,5 +28,15 @@
 }
 
 .books{
-    background-color: rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+    overflow-y: scroll;
+    max-height: 618px;
+}
+
+.example{
+    background-color: blueviolet;
+    height: 350px;
 }
