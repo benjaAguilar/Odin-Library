@@ -85,13 +85,21 @@ dialogAdd.addEventListener("click", () => {bookForm.showModal();});
 //Take the book info
 addBtn.addEventListener("click", () => {
 
+    let copy;
     let name = document.querySelector("#name").value;
     let description = document.querySelector("#description").value;
     let author = document.querySelector("#author").value;
     let pages = document.querySelector("#pages").value;
     let read = document.querySelector("#read").checked;
 
-    if(name && description && author && pages != ""){
+    myLibrary.forEach((book) => {
+        if(book.name === name){
+            copy = book.name;
+            alert("that book already exists");
+        }
+    });
+
+    if(name && description && author && pages != "" && copy != name){
         addBookToLibrary(name, description, author, pages, read);
         printBook(name);
 
