@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .main{
@@ -10,21 +11,29 @@
     grid-template-rows: 20px 1fr;
     width: 100vw;
     height: 100vh;
-    background-color: aqua;
+    background-color: #1e293b;
 }
 
 .sidebar{
     grid-row: 1 / 3;
-    background-color: aqua;
+    background-color: #1e293b;
+    color: white;
 }   
 
 .content{
     grid-row: 2 / 3;
     display: grid;
     grid-template-rows: 30px 1fr 30px;
-    background-color: cadetblue;
+    background-image: url("../imgs/omid-armin-g17w8RVeKuQ-unsplash.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     border-top-left-radius: 1rem;
     padding: 1rem;
+}
+
+h2{
+    color: white;
 }
 
 .books{
@@ -34,6 +43,23 @@
     padding: 1rem;
     overflow-y: scroll;
     max-height: 618px;
+}
+
+.dialog-add,
+#add-btn{
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+    color: indianred;
+    font-weight: bold;
+}
+
+.dialog-add:hover,
+#add-btn:hover{
+    cursor: pointer;
+    background-color: indianred;
+    color: white;
+    transition: 200ms all;
 }
 
 .example{
@@ -71,4 +97,43 @@
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 1rem;
+}
+
+dialog{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+}
+
+::backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#book-form form{
+    display: grid;
+    grid-template-rows: 1fr 4fr repeat(4, 1fr);
+    gap: 0.8rem;
+}
+
+label[for="read"],
+label[for="read-info"]{
+    color: white;
+    font-weight: bold;
+}
+
+input{
+    padding: 8px;
+}
+
+textarea{
+    resize: none;
+}
+
+.description,
+.author,
+.pages{
+    color: white;
 }
