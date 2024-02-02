@@ -44,8 +44,16 @@
 
 .advanced{
     display: grid;
-    grid-template-rows: 50px 50px;
+    grid-template-rows: 50px 50px 100px;
     padding: 1rem;
+}
+
+.credits{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
 }
 
 .options li,
