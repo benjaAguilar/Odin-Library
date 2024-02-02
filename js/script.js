@@ -28,9 +28,9 @@ function addBookToLibrary(name, description, author, pages, read){
     console.log(myLibrary.indexOf(book));
 }
 
-function showBookInfo(book){
+function showBookInfo(clickedBook){
     let index;
-    let title = book.querySelector("p").textContent;
+    let title = clickedBook.querySelector("p").textContent;
 
     let description = document.querySelector(".description");
     let author = document.querySelector(".author");
@@ -51,11 +51,20 @@ function showBookInfo(book){
     author.textContent = "By: " + myLibrary[index].author;
     pages.textContent = "Pages: " + myLibrary[index].pages;
     read.checked = myLibrary[index].read;
-    
-    read.addEventListener("change", () => {
-        myLibrary[index].read = read.checked;
 
-    });
+    read.removeEventListener("change", itsChecked)
+    read.addEventListener("change", itsChecked);
+
+    function itsChecked(){
+        let infoTitle = document.querySelector(".title").textContent;
+
+        if(myLibrary[index].name === infoTitle){
+            myLibrary[index].read = read.checked;
+
+        }
+
+        console.log("Estado cambiado:", myLibrary[index].name + " " + myLibrary[index].read);
+    }
 
     bookInfo.showModal();
 }
