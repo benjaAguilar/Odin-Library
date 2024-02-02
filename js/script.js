@@ -9,6 +9,8 @@ let exampleBook = document.querySelector(".example");
 let bookInfo = document.querySelector("#book-info");
 let closeInfo = document.querySelector("#close-info");
 
+let delBook = document.querySelector("#delete-book");
+
 function Book(name, description, author, pages, read){
 
     this.name = name;
@@ -107,6 +109,29 @@ addBtn.addEventListener("click", () => {
         printBook(name);
 
     }
+});
+
+delBook.addEventListener("click", () => {
+    let index;
+    let title = document.querySelector(".title").textContent;
+    let takeBooks = document.querySelectorAll(".example");
+    
+    myLibrary.forEach((book) => {
+        if(title === book.name){
+            index = myLibrary.indexOf(book);
+            myLibrary.splice(index, 1);
+        }
+    });
+
+    takeBooks.forEach((book) => {
+        let name = book.querySelector("p").textContent;
+
+        if(title === name){
+            book.remove();
+        }
+    })
+
+    bookInfo.close();
 });
 
 let example = new Book(

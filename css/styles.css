@@ -114,7 +114,8 @@ h2{
 .dialog-add:hover,
 #add-btn:hover,
 #close-info:hover,
-#close-form:hover{
+#close-form:hover,
+#delete-book:hover{
     cursor: pointer;
     background-color: indianred;
     color: #f1f5f9;
@@ -122,21 +123,23 @@ h2{
 }
 
 #close-info,
-#close-form{
+#close-form,
+#delete-book{
     border-radius: 5px;
     border: none;
     background-color: #f1f5f9;
     color: #1e293b;
     font-weight: bold;
     padding: 8px;
-    width: 80px;
+    width: 100px;
 }
 
 .img-book img{
     width: 250px;
 }
 
-.example{
+.example,
+.example2{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,7 +157,8 @@ h2{
     box-shadow: 0px 0px 5px black;
 }
 
-.example p{
+.example p,
+.example2 p{
     max-width: 200px;
 }
 
@@ -215,6 +219,7 @@ textarea{
     margin-top: 1rem;
 }
 
-#close-info{
+#close-info,
+#delete-book{
     margin-top: 1rem;
 }
