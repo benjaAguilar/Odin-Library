@@ -22,6 +22,14 @@
     color: #f1f5f9;
 }
 
+.sidebar li:hover{
+    background-color: indianred;
+    border-radius: 10px;
+    border-left: 3px solid #f1f5f9;
+    padding: 1rem;
+    cursor: pointer;
+}
+
 .logo{
     display: grid;
     grid-template-columns: 1fr 1fr;
