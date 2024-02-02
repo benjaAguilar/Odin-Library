@@ -2,10 +2,12 @@ const myLibrary = [];
 
 let bookForm = document.querySelector("#book-form");
 let dialogAdd = document.querySelector(".dialog-add");
+let closeForm = document.querySelector("#close-form");
 let addBtn = document.querySelector("#add-btn");
 let exampleBook = document.querySelector(".example");
 
 let bookInfo = document.querySelector("#book-info");
+let closeInfo = document.querySelector("#close-info");
 
 function Book(name, description, author, pages, read){
 
@@ -80,6 +82,8 @@ function printBook(name){
 }
 
 dialogAdd.addEventListener("click", () => {bookForm.showModal();});
+closeForm.addEventListener("click", () => {bookForm.close();});
+closeInfo.addEventListener("click", () => {bookInfo.close();});
 
 //Take the book info
 addBtn.addEventListener("click", () => {
