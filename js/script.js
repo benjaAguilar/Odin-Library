@@ -11,85 +11,67 @@ let closeInfo = document.querySelector("#close-info");
 
 let delBook = document.querySelector("#delete-book");
 
-function Book(name, description, author, pages, read){
+class Book{
 
-    this.name = name;
-    this.description = description;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
-
-function addBookToLibrary(name, description, author, pages, read){
-
-    const book = new Book(name, description, author, pages, read)
-    myLibrary.push(book);
-    console.log(myLibrary);
-    console.log(myLibrary.indexOf(book));
-}
-
-function showBookInfo(clickedBook){
-    let index;
-    let title = clickedBook.querySelector("p").textContent;
-
-    let description = document.querySelector(".description");
-    let author = document.querySelector(".author");
-    let pages = document.querySelector(".pages");
-    let read = document.querySelector("#read-info");
-
-    document.querySelector("#info-title").textContent = title;
-    document.querySelector(".title").textContent = title; 
+    constructor(name, description, author, pages, read){
+        this.name = name;
+        this.description = description;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
     
-    myLibrary.forEach((book) => {
-        if(book.name === title){
-            index = myLibrary.indexOf(book);
-            
-        }
-    });
-
-    description.textContent = myLibrary[index].description;
-    author.textContent = "By: " + myLibrary[index].author;
-    pages.textContent = "Pages: " + myLibrary[index].pages;
-    read.checked = myLibrary[index].read;
-
-    read.removeEventListener("change", itsChecked)
-    read.addEventListener("change", itsChecked);
-
-    function itsChecked(){
-        let infoTitle = document.querySelector(".title").textContent;
-
-        if(myLibrary[index].name === infoTitle){
-            myLibrary[index].read = read.checked;
-
-        }
-
-        console.log("Estado cambiado:", myLibrary[index].name + " " + myLibrary[index].read);
+    itsChecked(){
+        this.read = read.checked;    
     }
 
-    bookInfo.showModal();
-}
+    showBookInfo(){
 
-//Add event listener for every book created
-function createEvent(book){
-    book.addEventListener("click", () => {
-        showBookInfo(book);
+        let title = document.querySelector(".title");
+        let description = document.querySelector(".description");
+        let author = document.querySelector(".author");
+        let pages = document.querySelector(".pages");
+        let read = document.querySelector("#read-info");
+
+        title.textContent = this.name;
+        description.textContent = this.description;
+        author.textContent = "By: " + this.author;
+        pages.textContent = "Pages: " + this.pages;
+        read.checked = this.read;
+
+        read.removeEventListener("change", this.itsChecked);
+        read.addEventListener("change", this.itsChecked);
+
+        bookInfo.showModal();
+    }
+
+    //Add event listener for every book created
+    createEvent(book){
+        book.addEventListener("click", () => {
+            this.showBookInfo(book);
     });
-}
-
-function printBook(name){
-
-    let bookSection = document.querySelector(".books");
-    let bookBox = document.createElement("div");
-    let bookTitle = document.createElement("p");
-
-    bookTitle.textContent = name;
-
-    bookBox.classList.add("example");
-
-    bookBox.appendChild(bookTitle);
-    bookSection.appendChild(bookBox);
+    }
     
-    createEvent(bookBox);
+    printBook(){
+        let bookSection = document.querySelector(".books");
+        let bookBox = document.createElement("div");
+        let bookTitle = document.createElement("p");
+
+        bookTitle.textContent = this.name;
+
+        bookBox.classList.add("example");
+
+        bookBox.appendChild(bookTitle);
+        bookSection.appendChild(bookBox);
+        
+        this.createEvent(bookBox);
+    }
+
+    addBookToLibrary(book){
+        myLibrary.push(book);
+
+    }
+    
 }
 
 dialogAdd.addEventListener("click", () => {bookForm.showModal();});
@@ -114,9 +96,9 @@ addBtn.addEventListener("click", () => {
     });
 
     if(name && description && author && pages != "" && copy != name){
-        addBookToLibrary(name, description, author, pages, read);
-        printBook(name);
-
+        const book = new Book(name, description, author, pages, read);
+        book.addBookToLibrary(book);
+        book.printBook();
     }
 });
 
@@ -152,5 +134,5 @@ let example = new Book(
 
 myLibrary.push(example);
 exampleBook.addEventListener("click", () => {
-    showBookInfo(exampleBook);
+    example.showBookInfo();
 });
