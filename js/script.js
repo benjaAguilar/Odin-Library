@@ -21,26 +21,23 @@ class Book{
         this.read = read;
     }
     
-    itsChecked(){
-        this.read = read.checked;    
-    }
-
     showBookInfo(){
 
+        let bTitle = document.querySelector("#info-title");
         let title = document.querySelector(".title");
         let description = document.querySelector(".description");
         let author = document.querySelector(".author");
         let pages = document.querySelector(".pages");
-        let read = document.querySelector("#read-info");
+        let readed = document.querySelector("#read-info");
 
+        bTitle.textContent = this.name;
         title.textContent = this.name;
         description.textContent = this.description;
         author.textContent = "By: " + this.author;
         pages.textContent = "Pages: " + this.pages;
-        read.checked = this.read;
+        readed.checked = this.read;
 
-        read.removeEventListener("change", this.itsChecked);
-        read.addEventListener("change", this.itsChecked);
+        readed.addEventListener("change", () => { if(this.name === bTitle.textContent) this.read = readed.checked });
 
         bookInfo.showModal();
     }
